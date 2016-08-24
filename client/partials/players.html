@@ -1,0 +1,31 @@
+<div ng-controller='playersController'>
+		<div class="body">
+			<div class="col-sm-6 col-sm-offset-3 text-center form">
+				<form class="form-inline" ng-submit='create()'>
+					<div class="form-group">
+					    <label for="player">Player Name</label>
+					    <input type="text" class="form-control" id="player" ng-model='player.player'>
+					</div>
+					<input type="submit" class="btn btn-primary" value="Add Player">
+				</form>
+			</div>
+			<div class="col-sm-8 col-sm-offset-2">
+			<table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th>Player Name</th>
+			      <th>Actions</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	<tr ng-repeat='player in players'>
+			  		<td>{{ player.player }}</td>
+			  		<td><button class="btn btn-danger" ng-click="delete($index)">Delete</button></td>
+			  		
+			  	</tr>
+			    
+			  </tbody>
+			</table>
+		</div>
+	</div>
+</div>

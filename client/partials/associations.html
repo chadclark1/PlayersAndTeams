@@ -1,0 +1,46 @@
+<div ng-controller='associationsController'>
+		<div class="body">
+			<div class="col-sm-6 col-sm-offset-3 text-center form">
+				<form class="form-inline" ng-submit='create()'>
+					
+					<div class="form-group">
+					    <label for="player-select">Player</label>
+					    <select class="form-control" id="player-select" ng-model="newAssoc.playerIdx" ng-init="newAssoc.playerIdx = 0">
+					      <option ng-repeat='player in players' value={{$index}}>{{ player.player }}</option>
+					      
+					    </select>
+					</div>
+
+					<div class="form-group">
+					    <label for="team-select">Player</label>
+					    <select class="form-control" id="team-select" ng-model="newAssoc.team" ng-init="newAssoc.team = teams[0].name">
+					      <option ng-repeat='team in teams' value={{team.team}}>{{ team.team }}</option>
+					      
+					    </select>
+					</div>
+
+					<input ng-click="associate($index)" class="btn btn-primary" value="Assign Player to Team">
+				</form>
+			</div>
+			<div class="col-sm-8 col-sm-offset-2">
+			<table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th>Player Name</th>
+			      <th>Team</th>
+			      <th>Actions</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	<tr ng-repeat='player in players'>
+			  		<td>{{ player.player }}</td>
+			  		<td>{{ player.team }}</td>
+			  		<td><button class="btn btn-danger" ng-click="removePlayerFromTeam($index)">Delete</button></td>
+			  		
+			  	</tr>
+			    
+			  </tbody>
+			</table>
+		</div>
+	</div>
+</div>
