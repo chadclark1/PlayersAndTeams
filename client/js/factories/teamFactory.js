@@ -1,5 +1,3 @@
-var app = angular.module('app', ['ngRoute']);
-
 //  ******TEAMS FACTORY*****
 
 	app.factory('teamFactory', function (){

@@ -1,5 +1,3 @@
-var app = angular.module('app', ['ngRoute']);
-
 //  ******PLAYERS CONTROLLER*****
 
     //  build the controllers
@@ -9,7 +7,7 @@ var app = angular.module('app', ['ngRoute']);
 			$scope.players = data;
 			$scope.player = {};
 		}
-	    
+
 	    $scope.index = function(){
 		    playerFactory.index(setPlayers);
 		}
@@ -19,7 +17,7 @@ var app = angular.module('app', ['ngRoute']);
 	    $scope.create = function(){
 	    	console.log($location);
 	    	playerFactory.create($scope.player, setPlayers)
-	    	
+
 	    }
 	    $scope.delete = function(id){
 	        console.log(id);
