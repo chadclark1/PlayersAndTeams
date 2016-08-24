@@ -8,6 +8,7 @@
 
 	<script src="angular/angular.js"></script>
     <script src="angular-route/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
 
 
 	<script type="text/javascript" src="./js/factories/playerFactory.js"></script>
@@ -22,7 +23,7 @@
 
 	<script>
 		//  inject the ngRoute dependency in the module.
-    var app = angular.module('app', ['ngRoute']);
+    var app = angular.module('app', ['ngRoute', 'ngMessages']);
 //     //  use the config method to set up routing:
 
 	app.config(function ($routeProvider) {
@@ -35,6 +36,9 @@
         })
         .when('/associations',{
             templateUrl: 'partials/associations.html'
+        })
+        .when('/:teamname',{
+            templateUrl: 'partials/team.html'
         })
         .otherwise({
           redirectTo: '/'
@@ -72,6 +76,10 @@
 
    		factory.removePlayerFromTeam = function($index){
 	      players[$index].team = "";
+	   	}
+
+	   	factory.playersOnTeam = function(teamName){
+	   		console.log('hi')
 	   	}
 
 	    return factory;
@@ -122,7 +130,7 @@
 		$scope.index();
 
 	    $scope.create = function(){
-	    	console.log($location);
+	    	console.log($scope.player);
 	    	playerFactory.create($scope.player, setPlayers)
 	    	
 	    }
@@ -135,7 +143,7 @@
 
 //  ******TEAMS CONTROLLER*****
 
-     app.controller('teamsController', ['$scope', 'teamFactory', function ($scope, teamFactory, $location) {
+     app.controller('teamsController', ['$scope', 'teamFactory', '$routeParams', function ($scope, teamFactory, $routeParams, $location) {
     		console.log($location);
 	      	function setTeams(data){
 			$scope.teams = data;
@@ -158,6 +166,21 @@
 		    teamFactory.delete(id,setTeams);
 		}
     }]);
+
+
+     app.controller('teamController', ['$scope', 'playerFactory', '$routeParams', function ($scope, teamFactory, $routeParams, $location) {
+    		console.log($routeParams);
+    		function setPlayers(){
+    			console.log('test2');
+		}
+
+    		$scope.teamname = $routeParams.teamname;
+    		// console.log($scope.teamname);
+    		teamName = $routeParams.teamname;
+
+
+ 		 
+		}])
 
 //  ******ASSOCIATIONS CONTROLLER*****
 

@@ -1,13 +1,17 @@
 <div ng-controller='playersController'>
 		<div class="body">
 			<div class="col-sm-6 col-sm-offset-3 text-center form">
-				<form class="form-inline" ng-submit='create()'>
+				<form class="form-inline" ng-submit='create()' name='playerForm'>
 					<div class="form-group">
 					    <label for="player">Player Name</label>
-					    <input type="text" class="form-control" id="player" ng-model='player.player'>
+					    <input type="text" class="form-control" id="player" ng-model='player.player' ng-minlength='4' required>
 					</div>
 					<input type="submit" class="btn btn-primary" value="Add Player">
 				</form>
+				<div ng-messages="playerForm.name.$error">
+				     <p ng-message="minlength">The player name is too short.</p>
+				     <p ng-message="required">The player name is required.</p>
+				 </div>
 			</div>
 			<div class="col-sm-8 col-sm-offset-2">
 			<table class="table table-striped">

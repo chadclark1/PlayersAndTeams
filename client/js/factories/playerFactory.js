@@ -3,7 +3,6 @@ var app = angular.module('app', ['ngRoute']);
 //  ******PLAYERS FACTORY*****
 
     app.factory('playerFactory', function (){
-	    // The factory is nothing more than a function that returns an object
 	    var players = [
 	        {player: 'Chad', team:''},
 	        {player: 'Doug', team:''},

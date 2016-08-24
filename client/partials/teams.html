@@ -20,8 +20,8 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-			  	<tr ng-repeat='team in teams'>
-			  		<td>{{ team.team }}</td>
+			  	<tr ng-repeat='team in teams track by $index'>
+			  		<td><a href="#/{{team.team}}">{{ team.team }}</a></td>
 			  		<td><button class="btn btn-danger" ng-click="delete($index)">Delete</button></td>
 			  		
 			  	</tr>
