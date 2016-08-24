@@ -1,5 +1,3 @@
-var app = angular.module('app', ['ngRoute']);
-
 //  ******TEAMS CONTROLLER*****
 
      app.controller('teamsController', ['$scope', 'teamFactory', function ($scope, teamFactory, $location) {
@@ -8,7 +6,7 @@ var app = angular.module('app', ['ngRoute']);
 			$scope.teams = data;
 			$scope.team = {};
 		}
-	    
+
 	    $scope.index = function(){
 		    teamFactory.index(setTeams);
 		}
@@ -18,7 +16,7 @@ var app = angular.module('app', ['ngRoute']);
 	    $scope.create = function(){
 	    	console.log($location);
 	    	teamFactory.create($scope.team, setTeams)
-	    	
+
 	    }
 	    $scope.delete = function(id){
 	        console.log(id);

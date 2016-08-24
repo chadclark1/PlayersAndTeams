@@ -1,8 +1,5 @@
-var app = angular.module('app', ['ngRoute']);
 
-//  ******PLAYERS FACTORY*****
-
-    app.factory('playerFactory', function (){
+app.factory('playerFactory', function (){
 	    // The factory is nothing more than a function that returns an object
 	    var players = [
 	        {player: 'Chad', team:''},
@@ -20,8 +17,8 @@ var app = angular.module('app', ['ngRoute']);
 	    }
 
 	    factory.delete = function(id, callback){
-	    	selectedPlayer = player[id];
-	    	selectedPlayer.team = team;
+				// Changed this function to delete player from players
+	    	players.splice(id, 1);
 	    	callback(players);
 	    }
 
